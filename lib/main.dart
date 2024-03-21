@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+ 
+void main() {
+  runApp(
+    MaterialApp(
+      home: Contador(),
+    )
+  );
+}
+ 
+class Contador extends StatefulWidget {
+  const Contador({super.key});
+  @override
+  State<Contador> createState() => _ContadorState();
+}
+ 
+class _ContadorState extends State<Contador> {
+
+  int contador = 0;
+  
+
+void increment(){
+  setState(() {
+    if(contador<30){
+      contador++;
+    }
+  });
+}
+void decrement(){
+  setState(() {
+    if(contador>0){
+      contador--;
+    }
+  });
+}
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(contador<30?"Pode entrar!":"Casa cheia!", style: TextStyle(fontSize: 30, color:Colors.white),),
+          Text(contador.toString(), style: TextStyle(fontSize: 100, color:Colors.white),),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+                  TextButton(
+                    onPressed: increment,
+                     child: Text("Entrou", style: TextStyle(fontSize: 17, color: Colors.white)),
+                     style: TextButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      fixedSize: Size(100, 100),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24)
+                      )
+                     ),
+                     ),
+
+                  SizedBox(width: 64,),
+
+                  TextButton(onPressed: decrement,
+                   child: Text("Saiu", style: TextStyle(fontSize: 17, color: Colors.white)),
+                      style: TextButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      fixedSize: Size(100, 100),
+                       shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24)
+                      )
+                   ),)
+            ],)
+        ],
+      ),
+    );
+  }
+}
