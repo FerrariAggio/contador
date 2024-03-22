@@ -17,7 +17,7 @@ class Contador extends StatefulWidget {
 class _ContadorState extends State<Contador> {
 
   int contador = 0;
-  
+
 
 void increment(){
   setState(() {
@@ -37,8 +37,11 @@ void decrement(){
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: Colors.black,
-      body: Column(
+      body: Container(
+        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("images/restaurant.png"), fit:BoxFit.cover )),
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(contador<30?"Pode entrar!":"Casa cheia!", style: TextStyle(fontSize: 30, color:Colors.white),),
@@ -48,9 +51,9 @@ void decrement(){
             children: [
                   TextButton(
                     onPressed: increment,
-                     child: Text("Entrou", style: TextStyle(fontSize: 17, color: Colors.white)),
+                     child: Text("Entrou", style: TextStyle(fontSize: 17, color: Colors.black)),
                      style: TextButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 100),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24)
@@ -61,9 +64,9 @@ void decrement(){
                   SizedBox(width: 64,),
 
                   TextButton(onPressed: decrement,
-                   child: Text("Saiu", style: TextStyle(fontSize: 17, color: Colors.white)),
+                   child: Text("Saiu", style: TextStyle(fontSize: 17, color: Colors.black)),
                       style: TextButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 100),
                        shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24)
@@ -72,6 +75,7 @@ void decrement(){
             ],)
         ],
       ),
+      )
     );
   }
 }
